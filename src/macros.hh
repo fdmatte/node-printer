@@ -109,7 +109,7 @@
 #define REQUIRE_ARGUMENT_INTEGER(args, i, var)                             \
     int var;                                                                   \
     if (args[i]->IsInt32()) {                                             \
-        var = args[i]->Int32Value();                                           \
+        var = args[i]->Int32Value(Nan::GetCurrentContext()).FromJust();                                           \
     }                                                                          \
     else {                                                                     \
         RETURN_EXCEPTION_STR("Argument " #i " must be an integer");                 \
@@ -121,7 +121,7 @@
         var = (default);                                                       \
     }                                                                          \
     else if (args[i]->IsInt32()) {                                             \
-        var = args[i]->Int32Value();                                           \
+        var = args[i]->Int32Value(Nan::GetCurrentContext()).FromJust();                                           \
     }                                                                          \
     else {                                                                     \
         RETURN_EXCEPTION_STR("Argument " #i " must be an integer");                 \
